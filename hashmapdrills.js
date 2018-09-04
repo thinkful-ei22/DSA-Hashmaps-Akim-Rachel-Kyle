@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 //Set up constructor and hash function
 class HashMap {
@@ -25,20 +25,28 @@ class HashMap {
     }
 
     const index = this._findSlot(key);
-    if (this._slots[index] !== null) {
-      while (this._slots[index] !== null) {
-        index = index + 1;
-      };
-    }
-    else {
-      this._slots[index]
-        key,
-        value
+    let newIndex = index;
+    let remainingCapacity = this._capacity - index;
 
-      this.length++;
+    if (this._slots[newIndex] !== null) {
+      while (this._slots[newIndex] !== null) {
+        newIndex = newIndex + 1;
+        remainingCapacity - 1;
+        if (remainingCapacity === 0) {
+          newIndex = this._slots[0];
+          remainingCapacity = this._capacity;
+        }
+        if (newIndex === index) {
+          console.log("No available space! Everything went wrong. Disaster");
+          return;
+        }
+      }
     }
+    this._slots[index];
+    key, value;
+
+    this.length++;
   }
-
 
   _findSlot(key) {
     const hash = HashMap._hashString(key);
@@ -68,12 +76,12 @@ class HashMap {
   }
 }
 
-const lor = new HashMap()
+const lor = new HashMap();
 
 function main() {
   lor.set("Hobbit", "Bilbo");
   lor.set("Hobbit", "Frodo");
-  console.log("this is lor", lor)
+  console.log("this is lor", lor);
 }
 
 main();
